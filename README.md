@@ -21,4 +21,4 @@ Manga Dashboard is a web application built using Flask, HTML, CSS, and JavaScrip
 1. Clone the repository:
 
 ```bash
-git clone https://github.com/L1V3Y/manga-dbms.git
+git clone https://github.com/L1v3y/manga-dbms.git
