@@ -22,3 +22,17 @@ Manga Dashboard is a web application built using Flask, HTML, CSS, and JavaScrip
 
 ```bash
 git clone https://github.com/L1v3y/manga-dbms.git
+```
+2. Install dependencies:
+
+```bash
+
+pip install -r requirements.txt
+```
+3. Run the application:
+
+```bash
+
+python app.py
+```
+4. Open your web browser and go to http://localhost:5000 to view the Manga Dashboard.
