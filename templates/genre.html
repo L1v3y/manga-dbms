@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Genre Details</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        /* Genre-themed CSS styles */
+        body {
+            background-color: #f8f9fa;
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            max-width: 800px;
+        }
+        .genre-card {
+            margin-bottom: 20px;
+            background-color: #ffffff;
+            border: 1px solid #dee2e6;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .genre-card-body {
+            padding: 20px;
+        }
+        .genre-name {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        .genre-details {
+            font-size: 14px;
+            color: #6c757d;
+        }
+        .genre-details-item {
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="text-center mb-4">Genre Details</h1>
+        <div class="row">
+            {% for genre in genre_data %}
+            <div class="col-md-6">
+                <div class="genre-card">
+                    <div class="genre-card-body">
+                        <h2 class="genre-name">{{ genre['Name'] }}</h2>
+                        <div class="genre-details">
+                            <div class="genre-details-item">Description: {{ genre['Description'] }}</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</body>
+</html>

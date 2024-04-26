@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Review Details</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        /* Review-themed CSS styles */
+        body {
+            background-color: #f8f9fa;
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            max-width: 800px;
+        }
+        .review-card {
+            margin-bottom: 20px;
+            background-color: #ffffff;
+            border: 1px solid #dee2e6;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .review-card-body {
+            padding: 20px;
+        }
+        .review-rating {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        .review-comments {
+            color: #6c757d;
+            margin-bottom: 15px;
+        }
+        .review-details {
+            font-size: 14px;
+            color: #6c757d;
+        }
+        .review-details-item {
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="text-center mb-4">Review Details</h1>
+        <div class="row">
+            {% for review in review_data %}
+            <div class="col-md-6">
+                <div class="review-card">
+                    <div class="review-card-body">
+                        <h2 class="review-rating">Rating: {{ review['Rating'] }}</h2>
+                        <p class="review-comments">Comments: {{ review['Comments'] }}</p>
+                        <div class="review-details">
+                            <div class="review-details-item">Manga ID: {{ review['MangaID'] }}</div>
+                            <div class="review-details-item">User ID: {{ review['UserID'] }}</div>
+                            <div class="review-details-item">Date: {{ review['Date'] }}</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</body>
+</html>

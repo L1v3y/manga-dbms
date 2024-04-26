@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="shortcut icon" type="image/x-icon" href="https://cdn.sanity.io/images/kts928pd/production/29500268399d23888b5557a2ad412ef71751f5d3-731x731.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manga Dashboard</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        /* Manga-themed CSS styles */
+        body {
+            background-color: #f8f9fa;
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            max-width: 800px;
+        }
+        .manga-card {
+            margin-bottom: 20px;
+            background-color: #ffffff;
+            border: 1px solid #dee2e6;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .manga-card img {
+            width: 100%;
+            border-top-left-radius: 8px;
+            border-top-right-radius: 8px;
+        }
+        .manga-card-body {
+            padding: 20px;
+        }
+        .manga-title {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        .manga-description {
+            color: #6c757d;
+            margin-bottom: 15px;
+        }
+        .manga-info {
+            font-size: 14px;
+            color: #6c757d;
+        }
+        .manga-info-item {
+            margin-right: 20px;
+        }
+        .title-container {
+            display: flex; /* Ensure child elements are in a row */
+            align-items: center; /* Align items vertically in the center */
+            justify-content: space-between; /* Space items evenly */
+            margin-bottom: 20px;
+        }
+        .title {
+            font-size: 24px;
+            font-weight: bold;
+            color: black;
+            transition: color 0.3s; /* Smooth transition for color change */
+        }
+        .title:hover {
+            color: grey; /* Change color to grey when hovered */
+        }
+        .nav-links a {
+            margin-left: 10px;
+            color: black;
+            text-decoration: none;
+        }
+        .hacker a {
+            margin-left: 10px;
+            color: rgba(0, 0, 0, 0.699);
+            text-decoration: none;
+        }
+        .text-center {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-5">
+        <div class="title-container">
+            <div class="title">Manga DBMS</div>
+            <div class="nav-links">
+                <a href="{{ url_for('author') }}">Author</a>
+                <a href="{{ url_for('genre') }}">Genre</a>
+                <a href="{{ url_for('publish')}}">Publisher</a>
+                <a href="{{ url_for('review') }}">Review</a>
+                <a href="{{ url_for('logout') }}">Log Out</a>    
+            </div>
+        </div> 
+        <div class="row">
+            {% for manga in manga_data %}
+            <div class="col-md-6">
+                <div class="manga-card">
+                    <img src="{{ url_for('static', filename='manga_images/' + manga['CoverImage']) }}" alt="{{ manga['Title'] }}">
+                    <div class="manga-card-body">
+                        <h2 class="manga-title">{{ manga['Title'] }}</h2>
+                        <p class="manga-description">{{ manga['Description'] }}</p>
+                        <div class="manga-info">
+                            <span class="manga-info-item">Release Date: {{ manga['ReleaseDate'] }}</span>
+                            <span class="manga-info-item">Status: {{ manga['Status'] }}</span>
+                            <span class="manga-info-item">Rating: {{ manga['Rating'] }}</span>
+                            <span class="manga-info-item">Author: {{ manga['AuthorID'] }}</span>
+                            <span class="manga-info-item">Genre: {{ manga['GenreID'] }}</span>
+                            <span class="manga-info-item">Publisher: {{ manga['PublisherID'] }}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        <div class="text-center"> <!-- Center the navigation links -->
+            <div class="nav-links" >
+                <a href="{{ url_for('add_manga_entry') }}">ADD MANGA</a>
+                <a href="{{ url_for('delete_manga_entry') }}">DELETE MANGA</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

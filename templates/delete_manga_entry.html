@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Delete Manga Entry</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="text-center mb-4">Delete Manga Entry</h1>
+        <form id="deleteMangaForm">
+            <div class="form-group">
+                <label for="manga_id">MangaID:</label>
+                <input type="number" class="form-control" id="manga_id" name="manga_id" required>
+            </div>
+            <button type="submit" class="btn btn-danger">Delete Entry</button>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById('deleteMangaForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent form submission
+            
+            // Get form data
+            const formData = new FormData(this);
+
+            // Send form data to server using AJAX
+            fetch('/delete_manga_entry', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                alert(data.message); // Display response message
+                // Optionally, redirect to another page after successful deletion
+                if (data.success) {
+                    window.location.href = '/';
+                }
+            })
+            .catch(error => console.error('Error:', error));
+        });
+    </script>
+</body>
+</html>
